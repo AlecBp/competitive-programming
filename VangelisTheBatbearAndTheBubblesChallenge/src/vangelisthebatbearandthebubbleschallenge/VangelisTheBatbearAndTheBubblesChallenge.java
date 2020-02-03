@@ -11,7 +11,6 @@ public class VangelisTheBatbearAndTheBubblesChallenge {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
         for (int t = 0; t < n; t++) {
-            boolean loopDetected = false;
             int nodes = in.nextInt();
             int edges = in.nextInt();
             int n1, n2;
@@ -21,42 +20,51 @@ public class VangelisTheBatbearAndTheBubblesChallenge {
                 n2 = in.nextInt();
                 // Eliminate self loops
                 if (n1 == n2) {
-                    loopDetected = true;
+                    System.out.println("1");
+                    continue;
                 }
                 table[n1][n2] = 1;
                 table[n2][n1] = 1;
             }
-            printTable(table);
-            findLoop(table);
+            if (findLoop(table)) {
+                System.out.println("1");
+            } else {
+                System.out.println("0");
+            }
         }
     }
 
-    public static void findLoop(int[][] table) {
-        int[] visited = new int[table.length];
-        findLoop(table, visited, 0, 0, 0);
+    public static boolean findLoop(int[][] table) {
+        for (int i = 0; i < table.length; i++) {
+            boolean[] visited = new boolean[table.length];
+            if (findLoop(table, visited, i, i)) {
+                return true;
+            }
+        }
+        return false;
     }
 
-    public static void findLoop(int[][] table, int[] visited, int nVisited, int prevNode, int currNode) {
+    public static boolean findLoop(int[][] table, boolean[] visited, int prevNode, int currNode) {
         // Checks if the current node is in the visited stack, meaning that there is a loop
-        for (int i = 0; i < nVisited; i++) {
-            if (visited[i] == currNode) {
-                System.out.println("1");
-                return;
-            }
+        if (visited[currNode]) {
+            return true;
         }
         // Check for options to go to
         for (int i = 0; i < table.length; i++) {
             if (i != currNode) {
                 if (table[currNode][i] == 1) {
                     if (i != prevNode) {
-                        visited[nVisited++] = currNode;
-                        printArray(visited, nVisited);
-                        findLoop(table, visited, nVisited, currNode, i);
-                        nVisited--;
+                        visited[currNode] = true;
+//                        System.out.println("FROM " + currNode + " TO " + i);
+                        if (findLoop(table, visited, currNode, i)) {
+                            return true;
+                        }
+                        visited[currNode] = false;
                     }
                 }
             }
         }
+        return false;
     }
 
     public static void printTable(int[][] table) {
@@ -75,5 +83,4 @@ public class VangelisTheBatbearAndTheBubblesChallenge {
         }
         System.out.println("");
     }
-
 }
