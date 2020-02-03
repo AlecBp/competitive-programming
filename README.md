@@ -8,4 +8,4 @@ Most of them are classic programming problems or challenges found in websites li
 -   [Coin Change](https://github.com/AlecBp/competitive-programming/blob/master/CoinChange/src/coinchange/CoinChange.java)
 -   [Longest Common Subsequence](https://github.com/AlecBp/competitive-programming/blob/master/LongestCommonSubsequence/src/longestcommonsubsequence/LongestCommonSubsequence.java)
 -   [Vangelis the Batbear and the Bubbles Challenge](https://github.com/AlecBp/competitive-programming/blob/master/VangelisTheBatbearAndTheBubblesChallenge/src/vangelisthebatbearandthebubbleschallenge/VangelisTheBatbearAndTheBubblesChallenge.java)
--   [BeetleBag](https://github.com/AlecBp/competitive-programming/blob/master/LongestCommonSubsequence/src/beetlebag/BeetleBag.java)
+-   [BeetleBag](https://github.com/AlecBp/competitive-programming/blob/master/BeetleBag/src/beetlebag/BeetleBag.java)
