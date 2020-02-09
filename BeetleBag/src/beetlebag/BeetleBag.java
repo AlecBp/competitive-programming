@@ -8,10 +8,10 @@ public class BeetleBag {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        int cases = in.nextInt();
-        int[] answers = new int[cases];
+        int tCases = in.nextInt();
+        int[] answers = new int[tCases];
 //         Loop for each case
-        for (int t = 0; t < cases; t++) {
+        for (int t = 0; t < tCases; t++) {
             int cap = in.nextInt();
             int nItems = in.nextInt() + 1;
             int[] ps = new int[nItems];
