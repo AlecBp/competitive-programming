@@ -15,46 +15,73 @@ public class MatrixChainMultiplication {
 
         System.out.println("For every matrix enter the number of rows and columns, separated by a space");
         int[][] matrices = new int[2][numMatrices];
+        int[] simplified = new int[numMatrices + 1];
+
         for (int i = 0; i < numMatrices; i++) {
             System.out.print("Enter size of matrix [" + i + "]: ");
             // Row
             matrices[0][i] = in.nextInt();
+            simplified[i] = matrices[0][i];
             // Column
             matrices[1][i] = in.nextInt();
         }
-        print2DArray(matrices);
+        // Add column of last matrix
+        simplified[numMatrices] = matrices[1][numMatrices - 1];
 
-        int[][] calculations = new int[numMatrices][numMatrices];
-        // Fill diagonal with 0 and rest with Integer.MAX_VALUE
-        for (int i = 0; i < numMatrices; i++) {
-            for (int j = i; j < numMatrices; j++) {
+        MatrixChain(simplified, numMatrices + 1);
+    }
+
+    public static void MatrixChain(int[] simplified, int numMat) {
+        int i, j, k, chainLen, cost;
+
+        int[][] calculations = new int[numMat][numMat];
+        int[][] s = new int[numMat][numMat];
+
+        // Fill diagonal with 0 and rest with a high value
+        for (i = 0; i < numMat; i++) {
+            for (j = i; j < numMat; j++) {
                 if (i == j) {
                     calculations[i][j] = 0;
-                }else{
+                } else {
                     calculations[i][j] = Integer.MAX_VALUE;
                 }
             }
         }
-        for (int i = 0; i < numMatrices - 1; i++) {
-            getNumCalculations(i, i + 1, matrices, calculations); // 0,1 | 1,2 | 2,3
+
+        for (chainLen = 2; chainLen < numMat; chainLen++) {
+            for (i = 1; i < numMat - chainLen + 1; i++) {
+                j = i + chainLen - 1;
+                if (j == numMat) {
+                    continue;
+                }
+                for (k = i; k <= j - 1; k++) {
+                    cost = calculations[i][k] + calculations[k + 1][j] + simplified[i - 1] * simplified[k] * simplified[j];
+                    if (cost < calculations[i][j]) {
+                        calculations[i][j] = cost;
+                        s[i][j] = k;
+                    }
+                }
+            }
         }
 
+        System.out.println("\nCalculations");
         print2DArray(calculations);
+        System.out.println("\nS table");
+        print2DArray(s);
+        System.out.println("\nOrder of operations: ");
+        printOperations(s, 1, numMat - 1);
+        System.out.println("\nNumber of calculations: " + calculations[1][numMat - 1]);
     }
 
-    public static int getNumCalculations(int m1, int m2, int[][] matrices, int[][] calculations) {
-        if (m1 <= m2) {
-            return 0;
+    static void printOperations(int s[][], int i, int j) {
+        if (i == j) {
+            System.out.print("A" + i);
+        } else {
+            System.out.print("(");
+            printOperations(s, i, s[i][j]);
+            printOperations(s, s[i][j] + 1, j);
+            System.out.print(")");
         }
-        if (matrices[m1][m2] != 0) {
-            return calculations[m1][m2];
-        }
-        // M1rows *  (M1cols = M2rows) * M2cols
-        int calc = matrices[0][m1] * matrices[1][m1] * matrices[1][m2];
-        if (calc < calculations[m1][m2]) {
-            calculations[m1][m2] = calc;
-        }
-        return getNumCalculations(m1 + 1, m2 - 1, matrices, calculations);
     }
 
     public static void print2DArray(int[][] arr) {
