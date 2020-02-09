@@ -38,14 +38,17 @@ public class CoinChange {
             for (int amt = 0; amt < amount + 1; amt++) {
                 if (amt - coin >= 0) {
                     usePos = table[row][amt - coin] + 1;
-
                     if (usePos < table[row - 1][amt]) {
                         table[row][amt] = usePos;
                     } else {
                         table[row][amt] = table[row - 1][amt];
                     }
                 } else {
-                    table[row][amt] = table[row - 1][amt];
+                    if (row == 1) {
+                        table[row][amt] = 0;
+                    } else {
+                        table[row][amt] = table[row - 1][amt];
+                    }
                 }
             }
         }
