@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ##############################
 ## Java
 ##############################
@@ -76,3 +77,8 @@ nb-configuration.xml
 ## OS X
 ##############################
 .DS_Store
+=======
+/MatrixChainMultiplication/nbproject/private/
+/MatrixChainMultiplication/build/
+/MatrixChainMultiplication/dist/
+>>>>>>> remotes/origin/master
