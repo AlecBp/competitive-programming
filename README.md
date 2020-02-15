@@ -13,3 +13,4 @@ Most of them are classic programming problems or challenges found in websites li
 
 ## Utilities
 - [Managed Array](https://github.com/AlecBp/competitive-programming/blob/master/ManagedArray/src/managedarray/ManagedArray.java)
+- [Sorts Benchmark](https://github.com/AlecBp/competitive-programming/blob/master/SortsBenchmark/src/sortsbenchmark/SortsBenchmark.java)
