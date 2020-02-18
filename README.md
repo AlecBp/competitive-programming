@@ -14,6 +14,7 @@ Most of them are classic programming problems or challenges found in websites li
 ## Utilities
 - [Managed Array](https://github.com/AlecBp/competitive-programming/blob/master/ManagedArray)
 - [Sorts Benchmark](https://github.com/AlecBp/competitive-programming/blob/master/SortsBenchmark/src/sortsbenchmark/SortsBenchmark.java)
-- [Graphs - DW](https://github.com/AlecBp/competitive-programming/blob/master/Graphs)
+- [Graphs](https://github.com/AlecBp/competitive-programming/blob/master/Graphs)
     - Goal: Generalized graph library, capable of handling as many types of graphs as possible with most famous graphs' algorithms implemented.
-    - Current state: DWG with BFS, DFS and Topological Sort.
+    - Current state: 
+        - DWG with BFS, DFS and Topological Sort.
