@@ -81,11 +81,6 @@ nb-configuration.xml
 /MatrixChainMultiplication/nbproject/private/
 /MatrixChainMultiplication/build/
 /MatrixChainMultiplication/dist/
-<<<<<<< HEAD
-/ManagedArray/nbproject/private/
-/ManagedArray/build/
-/Graphs/nbproject/private/
-/Graphs/build/
-=======
 >>>>>>> remotes/origin/master
->>>>>>> cbf59e6374d6e4d0be8fb8117daeb818bd40ac4c
+/Heap/nbproject/private/
+/Heaps/nbproject/private/
